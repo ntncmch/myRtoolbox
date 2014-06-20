@@ -79,6 +79,31 @@ str_detect_multi_pattern <- function(string, multi_pattern, expression = c("rege
 	return(x)
 }
 
+#'Extract a substring
+#'
+#'Extract the part of \code{v.string} delimited by \code{my.split}, at position \code{position} from begining or end of \code{v.string}
+#' @param v.string a vector of strings
+#' @param my.split a character to delimite the substring to extract
+#' @param position nuleric, position of the substring to be extracted
+#' @param from character, \code{position} can be given from either the start (\code{first}) or end (\code{last}) of the \code{v.string}.
+#' @export
+extract_string <- function(v.string,my.split,position,from=c("first","last")){
+
+	from <- match.arg(from)
+	
+	res <- sapply(v.string,function(x){
+
+		tmp <- strsplit(as.character(x),split=my.split,fixed=T)[[1]]
+		
+		if(from=="last"){
+			position=length(tmp)-position+1
+		}
+
+		return(tmp[position])
+	})
+
+	return(res)
+}
 
 
 
