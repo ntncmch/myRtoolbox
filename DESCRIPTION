@@ -1,0 +1,8 @@
+Package: myRtoolbox
+Title: My R toolbox
+Version: 0.1
+Authors@R: c(person(given="Anton", family="Camacho",email="ntncmch@gmail.com",role=c("aut","cre")))
+Description: This package contains several basic and convenient R functions used by other packages
+Depends: R (>= 3.1.0)
+License: GPL-2
+LazyData: true
