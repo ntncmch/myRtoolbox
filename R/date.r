@@ -8,7 +8,8 @@
 #' @inheritParams lubridate::parse_date_time
 #' @note The \code{year_max} arguments is to handle the fact that date origin in \R is "1970-01-01" so dates like "08-05-45" will be parsed as "2045-05-08" instead of "1945-05-08" 
 #' @export
-#' @import lubridate
+#' @importFrom  lubridate parse_date_time
+#' @importFrom  lubridate year
 #' @return A data frame with dates formatted.
 format_date <- function(df_2format, pattern = "date", orders = "dmy", year_max = NULL, as_date = FALSE) {
 
