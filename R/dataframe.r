@@ -55,23 +55,31 @@ resolve_duplicate <- function(x, var_duplicated) {
 
 
 
-#'Extract from a data frame using prefix
+#'Split a data frame using prefix
 #'
-#'Extract only variables with a given \code{prefix}, allow for keeping variables without \code{prefix} by passing their names in \code{keep}.
+#'Split by etracting variables with a given \code{prefix}. Keep variables without \code{prefix} by passing their names in \code{keep}.
 #' @param df a data frame
 #' @param  prefix character, prefix of the variables to be extracted
 #' @param  keep character vector, specify variables without \code{prefix} to be returned
 #' @export
 #' @import plyr stringr
-#' @return a \code{data.frame} with the variables renamed without the \code{prefix}.
-extract_by_prefix <- function(df, prefix, keep=NULL) {
+#' @return a list of two elements:
+#' \itemize{
+#' 	\item \code{df} original data frame without \code{prefix} variables
+#' 	\item \code{df_prefix} \code{data.frame} with \code{prefix} and \code{keep} variables renamed without the \code{prefix}.
+#' }
+split_by_prefix <- function(df, prefix, keep=NULL) {
 
-	df_sub_names <- grep(prefix,names(df),value=TRUE)
-	df_sub <- df[c(keep,df_sub_names)]
-	new_names <- names(df_sub)
+	df_prefix_names <- grep(prefix,names(df),value=TRUE)
+
+	df_prefix <- df[c(keep,df_prefix_names)]
+	df <- df[setdiff(names(df),df_prefix_names)]
+
+	new_names <- names(df_prefix)
 	new_names <- unlist(llply(str_split(new_names,pattern=prefix),function(x) {rev(x)[1]}))	
-	names(df_sub) <- new_names	
 
-	return(df_sub)
+	names(df_prefix) <- new_names	
+
+	return(list(df=df,df_prefix=df_prefix))
 }
 
