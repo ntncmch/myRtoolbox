@@ -41,7 +41,7 @@ resolve_duplicate <- function(x, var_duplicated) {
 				df_var <- df[, var]
 				df2_var <- unique(df_var[!is.na(df_var)])
 				if (length(df2_var) > 1) {
-					warning("Can't resolve duplicate:",df2_var <- paste(df2_var, collapse = "/"),.call=FALSE)
+					warning("Can't resolve duplicate:",df2_var <- paste(df2_var, collapse = "/"),call.=FALSE)
 				}
 				df2[var] <- df2_var
 			}
