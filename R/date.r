@@ -50,7 +50,7 @@ format_date <- function(df_2format, pattern = "date", orders = "dmy", year_max =
 				}
 
 				if(!is.null(year_max) && length(ind <- which(year(x) > year_max))){
-					message("Substract 1 century to the following dates:",paste(as.character(x[ind]),collapse="\n"))
+					message("Substract 1 century to the following dates:\n",paste(as.character(x[ind]),collapse="\n"))
 					year(x[ind]) <- year(x[ind]) - 100				
 				}
 			}
@@ -64,7 +64,7 @@ format_date <- function(df_2format, pattern = "date", orders = "dmy", year_max =
 		}
 
 	} else {
-		message("No variable matches to ",sQuote("pattern")," in the data frame\n")
+		message("No match to ",sQuote("pattern")," in the data frame\n")
 	}
 
 	message("\n")
