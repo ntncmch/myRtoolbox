@@ -10,6 +10,8 @@
 #' @export
 #' @importFrom  lubridate parse_date_time
 #' @importFrom  lubridate year
+#' @importFrom  lubridate year<-
+#' @importFrom  lubridate is.Date
 #' @return A data frame with dates formatted.
 format_date <- function(df_2format, pattern = "date", orders = "dmy", year_max = NULL, as_date = FALSE) {
 
