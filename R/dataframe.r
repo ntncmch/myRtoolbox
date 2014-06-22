@@ -6,6 +6,9 @@
 #' @export
 diff_df <- function(df1, df2) {
 	
+	in_df1 <- NULL
+	in_df2 <- NULL
+	
 	if(!nrow(df1)){return(df2)}
 	if(!nrow(df2)){return(df1)}
 

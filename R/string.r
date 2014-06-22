@@ -16,6 +16,22 @@ remove_char <- function(x,char=c(0:10," ","_")) {
 	return(x)
 }
 
+#'Compare two strings
+#'
+#'Compare \code{a} and \code{b} after removing all digits, space and & characters.
+#'Return \code{TRUE} if \code{a} is a sub-string of \code{b} (or vice-versa).
+#' @param a,b two strings
+#' @export
+#' @import stringr
+str_compare <- function(a,b) {
+
+	# lower case & remove digits & space & "_"
+	a <- remove_char(tolower(a), char=c(0:10," ","_"))
+	b <- remove_char(tolower(b), char=c(0:10," ","_"))
+
+	return(str_detect(fixed(a),fixed(b)) | str_detect(fixed(b),fixed(a)))
+
+}
 
 
 #'Reduce duplicated characters in a string
