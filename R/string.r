@@ -107,3 +107,21 @@ extract_string <- function(v.string,my.split,position,from=c("first","last")){
 
 
 
+#'Capitalize every first letter of a word
+#'
+#'Split the word at each space (\code{" "}) and capitalize every sub-word.
+#' @param words a vector of strings
+#' @export
+simpleCap <- function(words) {
+	ans <- sapply(words, function(word) {
+		if (is.na(word)) {
+			return(word)
+		}
+		s <- strsplit(word, " ")[[1]]
+		paste(toupper(substring(s, 1, 1)), tolower(substring(s, 2)), sep = "", collapse = " ")
+	})
+	return(ans)
+}
+
+
+
