@@ -13,4 +13,5 @@ Imports:
     lubridate,
     stringr,
     plyr,
-    grid
+    grid,
+    ggplot2
