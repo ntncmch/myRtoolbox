@@ -20,6 +20,6 @@ a list of two elements:
 }
 }
 \description{
-Split by etracting variables with a given \code{prefix}. Keep variables without \code{prefix} by passing their names in \code{keep}.
+Split by extracting variables with a given \code{prefix}. Keep variables without \code{prefix} by passing their names in \code{keep}.
 }
 
