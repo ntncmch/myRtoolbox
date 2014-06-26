@@ -60,7 +60,7 @@ resolve_duplicate <- function(x, var_duplicated) {
 
 #'Split a data frame using prefix
 #'
-#'Split by etracting variables with a given \code{prefix}. Keep variables without \code{prefix} by passing their names in \code{keep}.
+#'Split by extracting variables with a given \code{prefix}. Keep variables without \code{prefix} by passing their names in \code{keep}.
 #' @param df a data frame
 #' @param  prefix character, prefix of the variables to be extracted
 #' @param  keep character vector, specify variables without \code{prefix} to be returned
