@@ -12,6 +12,7 @@ LazyData: true
 Imports:
     lubridate,
     stringr,
-    plyr,
+    dplyr,
     grid,
-    ggplot2
+    ggplot2,
+    plyr
