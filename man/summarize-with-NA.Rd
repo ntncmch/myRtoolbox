@@ -3,6 +3,8 @@
 \alias{any_na}
 \alias{first_na}
 \alias{last_na}
+\alias{max_na}
+\alias{min_na}
 \alias{summarize with NA}
 \title{Basic accounting for NA values}
 \usage{
@@ -11,13 +13,17 @@ last_na(x, na_rm = FALSE)
 any_na(x, na_rm = FALSE)
 
 first_na(x, na_rm = FALSE)
+
+max_na(x, na_rm = FALSE)
+
+min_na(x, na_rm = FALSE)
 }
 \arguments{
-\item{x}{vector}
+\item{x}{any object accepted by the basic function.}
 
 \item{na_rm}{logical. If \code{TRUE}, \code{\link{na.omit}} is performed first. Default to \code{FALSE}}
 }
 \description{
-All these functions performs the same as the basic version but differ when all elements are \code{NA}. In this case, \code{NA} is returned in the same format as \code{x}, which is not always the case when the basic function is used with \code{\link[dplyr]{summarize}}.
+All these functions performs the same as the basic version (same name without \code{_na} at the end) but differ when all elements are \code{NA}. In this case, \code{NA} is returned in the same format as \code{x}, which is not always the case when the basic function is used with \code{\link[dplyr]{summarize}}.
 }
 
