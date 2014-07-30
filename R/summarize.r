@@ -24,6 +24,18 @@ last_na <- function(x,na_rm=FALSE) {
 
 #' @name summarize with NA
 #' @export
+#' @aliases all_na
+all_na <- function(x,na_rm=FALSE) {
+
+	if(all(is.na(x))){
+		return(x[1])
+	} 
+
+	return(all(x,na.rm=na_rm))
+}
+
+#' @name summarize with NA
+#' @export
 #' @aliases any_na
 any_na <- function(x,na_rm=FALSE) {
 
@@ -33,6 +45,7 @@ any_na <- function(x,na_rm=FALSE) {
 
 	return(any(x,na.rm=na_rm))
 }
+
 
 
 #' @name summarize with NA

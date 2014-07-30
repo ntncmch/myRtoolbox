@@ -3,18 +3,18 @@
 \alias{extract_string}
 \title{Extract a substring}
 \usage{
-extract_string(v.string, my.split, position, from = c("first", "last"))
+extract_string(v_string, my_split, position, from = c("first", "last"))
 }
 \arguments{
-\item{v.string}{a vector of strings}
+\item{v_string}{a vector of strings}
 
-\item{my.split}{a character to delimite the substring to extract}
+\item{my_split}{a character to delimite the substring to extract}
 
 \item{position}{nuleric, position of the substring to be extracted}
 
-\item{from}{character, \code{position} can be given from either the start (\code{first}) or end (\code{last}) of the \code{v.string}.}
+\item{from}{character, \code{position} can be given from either the start (\code{first}) or end (\code{last}) of the \code{v_string}.}
 }
 \description{
-Extract the part of \code{v.string} delimited by \code{my.split}, at position \code{position} from begining or end of \code{v.string}
+Extract the part of \code{v_string} delimited by \code{my.split}, at position \code{position} from begining or end of \code{v_string}
 }
 
