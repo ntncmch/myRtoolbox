@@ -4,7 +4,7 @@
 \title{Format date variables in a data frame}
 \usage{
 format_date(df_2format, pattern = "date", orders = "dmy", year_max = NULL,
-  as_date = FALSE)
+  as_date = FALSE, excel = FALSE)
 }
 \arguments{
 \item{df_2format}{A data frame}
@@ -14,6 +14,8 @@ format_date(df_2format, pattern = "date", orders = "dmy", year_max = NULL,
 \item{year_max}{Numeric. If a year exceeds this value, one century is subtracted to it.}
 
 \item{as_date}{Logical. If \code{TRUE} dates are converted to class \code{"Date"}.}
+
+\item{excel}{Logical. If the orifginal file is an excel file put to \code{TRUE} and dates will be converted from Excel numbering to class \code{"Date"}.}
 
 \item{orders}{a character vector of date-time formats.
   Each order string is series of formatting characters as

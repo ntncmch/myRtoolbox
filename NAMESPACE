@@ -3,6 +3,7 @@
 export(all_na)
 export(any_na)
 export(diff_df)
+export(excelDate2Date)
 export(extract_string)
 export(first_na)
 export(format_date)

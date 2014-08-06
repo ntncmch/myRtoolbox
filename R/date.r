@@ -1,3 +1,20 @@
+
+#'Format excel date
+#'
+#'Format excel date into \code{Date} format.
+#' @param excelDate numeric vector of Excel dates
+#' @export
+excelDate2Date <- function(excelDate) { 
+	if(is.factor(excelDate)){
+		excelDate <- as.numeric(as.character(excelDate))
+	}
+	Date <- excelDate + as.Date("1900-01-01") - 2 
+
+    ## FIXME: add "if >1900-Feb-28" switch? 
+	return(Date) 
+} 
+
+
 #'Format date variables in a data frame
 #'
 #'This functions detects all date variables matching \code{pattern} and then use \code{\link[lubridate]{parse_date_time}} with specified \code{orders} to parse them as POSIXct date-time objects.
@@ -5,6 +22,7 @@
 #' @param pattern Vector of strings to match the name of date variables
 #' @param year_max Numeric. If a year exceeds this value, one century is subtracted to it.
 #' @param as_date Logical. If \code{TRUE} dates are converted to class \code{"Date"}.
+#' @param excel Logical. If the orifginal file is an excel file put to \code{TRUE} and dates will be converted from Excel numbering to class \code{"Date"}.
 #' @inheritParams lubridate::parse_date_time
 #' @note The \code{year_max} arguments is to handle the fact that date origin in \R is "1970-01-01" so dates like "08-05-45" will be parsed as "2045-05-08" instead of "1945-05-08" 
 #' @export
@@ -13,7 +31,7 @@
 #' @importFrom  lubridate year<-
 #' @importFrom  lubridate is.Date
 #' @return A data frame with dates formatted.
-format_date <- function(df_2format, pattern = "date", orders = "dmy", year_max = NULL, as_date = FALSE) {
+format_date <- function(df_2format, pattern = "date", orders = "dmy", year_max = NULL, as_date = FALSE, excel=FALSE) {
 
 	var_names <- names(df_2format)
 	var_date <- str_detect_multi_pattern(var_names,pattern,expression="ignore.case",value=TRUE)
@@ -37,6 +55,10 @@ format_date <- function(df_2format, pattern = "date", orders = "dmy", year_max =
 				x[] <- NA
 				
 			} else {
+
+				if(excel){
+					x <- excelDate2Date(x)
+				}
 
 				if(is.Date(x)){
 					x <- parse_date_time(x,orders="ymd")					
