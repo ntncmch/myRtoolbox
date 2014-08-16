@@ -15,4 +15,5 @@ Imports:
     dplyr,
     grid,
     ggplot2,
-    plyr
+    plyr,
+    gridExtra
