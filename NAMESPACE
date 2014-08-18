@@ -2,6 +2,7 @@
 
 export(all_na)
 export(any_na)
+export(capwords)
 export(diff_df)
 export(excelDate2Date)
 export(extract_string)

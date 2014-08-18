@@ -140,4 +140,21 @@ simpleCap <- function(words) {
 }
 
 
+#'Capitalize every first word letter of a string
+#'
+#'Split the string into words (must be separated by a signle space \code{" "}) and capitalize every word.
+#' @param string a vector of string of characters.
+#' @param strict logical. If \code{FALSE} (default) the case of the letters inside the words is not modified. If \code{TRUE}, all letters inside a word are lower case.
+#' @export
+capwords <- function(string, strict = FALSE) {
+
+	cap <- function(s) { 
+		paste(toupper(substring(s, 1, 1)), {s <- substring(s, 2); if(strict) tolower(s) else s}, sep = "", collapse = " " )
+	}
+
+	sapply(strsplit(string, split = " "), cap, USE.NAMES = !is.null(names(string)))
+}
+
+
+
 
