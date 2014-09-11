@@ -3,17 +3,19 @@
 \alias{resolve_duplicate}
 \title{Resolve duplicated rows of a data frame}
 \usage{
-resolve_duplicate(x, var_duplicated)
+resolve_duplicate(x, var_duplicated, var_must_resolve = NULL)
 }
 \arguments{
 \item{x}{data frame}
 
-\item{var_duplicated}{variable that should be unique but that has potential duplicated values and thus need to be solved}
+\item{var_duplicated}{variables that should be unique but that has potential duplicated values and thus need to be solved}
+
+\item{var_must_resolve}{variables that should be unique and that should not have potential duplicated values and thus can't must be resolved}
 }
 \description{
 Resolve duplicated values of \code{var_duplicated} by removing \code{NA} values from other variables of the data frame \code{x} and merging similar values.
 }
 \note{
-Throw a warning if one of the other column can't be reduced because of different, non \code{NA}, values. The value is then merged by collapsing the values.
+Throw a message if one of the other column can't be reduced because of different, non \code{NA}, values. The value is then merged by collapsing the values.
 }
 

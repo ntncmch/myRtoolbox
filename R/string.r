@@ -152,7 +152,9 @@ capwords <- function(string, strict = FALSE) {
 		paste(toupper(substring(s, 1, 1)), {s <- substring(s, 2); if(strict) tolower(s) else s}, sep = "", collapse = " " )
 	}
 
-	sapply(strsplit(string, split = " "), cap, USE.NAMES = !is.null(names(string)))
+	string[!is.na(string)] <- sapply(strsplit(string[!is.na(string)], split = " "), cap, USE.NAMES = !is.null(names(string[!is.na(string)])))
+
+	return(string)
 }
 
 
