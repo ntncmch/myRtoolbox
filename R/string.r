@@ -50,7 +50,7 @@ reduce_duplicated_char <- function(x,char="_") {
 
 		# detect multiple . and replace by _
 		pattern <- my_char
-		while(any(str_detect(x,fixed(pattern)))){
+		while(any(str_detect(x,fixed(pattern)), na.rm=TRUE)){
 			pattern <- str_join(pattern,my_char)
 		}
 		pattern <- str_sub(pattern,2L)
@@ -158,5 +158,36 @@ capwords <- function(string, strict = FALSE) {
 }
 
 
+
+#'String matching
+#'
+#'Match each element of \code{x} to an element of \code{match} if either one of these element is a sub-string of the other. This is done by combining \code{\link{charmatch}} and \code{\link[stringr]{str_detect}}.
+#' @param x vector of characters.
+#' @param  match vector of characters.
+#' @export
+#' @import stringr
+#' @seealso \code{\link{charmatch}}, \code{\link[stringr]{str_detect}}
+my_charmatch <- function(x, match) {
+
+	x_match <- rep(NA, length(x))
+
+	# remove NA and "" from x
+	i_no_match <- which(is.na(x) | x=="")
+	x <- x[-i_no_match]
+	x_to_match <- x_match[-i_no_match]
+
+	x_to_match <- match[charmatch(tolower(x), tolower(match))]
+
+	i_na <- which(is.na(x_to_match))
+
+	for(m in match){
+		x_to_match[i_na][str_detect(x[i_na], ignore.case(m))] <- m	
+		i_na <- which(is.na(x_to_match)) 		
+	}
+
+	x_match[-i_no_match] <- x_to_match
+
+	return(x_match)
+}
 
 
